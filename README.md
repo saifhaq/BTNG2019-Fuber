@@ -6,6 +6,11 @@ This concept that can be applied to other things, but for our example we are loo
 
 Project Kanban board on GitHub projects: <https://github.com/saifhaq/BTNG2019-Fuber/projects/1>
 
+## Flow diagram
+
+_Insert flow diagram here_
+
+
 ## Some user stories
 
 ### The farmer
