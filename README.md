@@ -8,8 +8,7 @@ Project Kanban board on GitHub projects: <https://github.com/saifhaq/BTNG2019-Fu
 
 ## Flow diagram
 
-_Insert flow diagram here_
-
+![flow diagram](./readme/flow-diagram.png)
 
 ## Some user stories
 
