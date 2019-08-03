@@ -29,11 +29,11 @@ public class Farmer {
 
     @RequestMapping(value = "/checkout", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
-    public void checkoutRental(@RequestBody RawBasicRental rental){
-        System.out.println(rental);
-//        for(RawBasicRental rental : items.getRentalList()) {
-//            dataService.addRental(rental);
-//        }
+    public void checkoutRental(@RequestBody List<RawBasicRental> items){
+        for(RawBasicRental rental : items) {
+            System.out.println(rental);
+            //dataService.addRental(rental);
+        }
     }
 
 }
