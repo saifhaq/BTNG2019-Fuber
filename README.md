@@ -6,6 +6,10 @@ This concept that can be applied to other things, but for our example we are loo
 
 Project Kanban board on GitHub projects: <https://github.com/saifhaq/BTNG2019-Fuber/projects/1>
 
+## Backend Design
+
+![Backend](./readme/initial-er-diagram.png)
+
 ## Our tools
 
 Backend/Database design using [dbdiagram.io](https://dbdiagram.io), a tool for creating Entity-Relationship Diagrams.
