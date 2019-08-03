@@ -1,7 +1,7 @@
 package com.fuber.restbackend.utils;
 
-import com.fuber.restbackend.bdo.Rental;
-import com.fuber.restbackend.bdo.Resource;
+import com.fuber.restbackend.bod.Rental;
+import com.fuber.restbackend.bod.Resource;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
@@ -26,16 +26,30 @@ public class Filters {
                 .collect(Collectors.toList());
     }
 
+    public static List<Resource> resourcesById(Collection<Resource> resources, int id) {
+
+        Predicate<Resource> byType = resource -> resource.getId() == id;
+
+        return resources.stream()
+                .filter(byType)
+                .collect(Collectors.toList());
+    }
+
+    public static List<Rental> rentalsByResourceId(Collection<Rental> rentals, int resourceId) {
+
+        Predicate<Rental> byResourceId = rental -> rental.getResourceId() == resourceId;
+
+        return rentals.stream()
+                .filter(byResourceId)
+                .collect(Collectors.toList());
+    }
+
     public static List<Resource> resourcesAvailableByDate(Collection<Resource> resources, DateTime startDate, DateTime endDate){
         //TODO Use streams
         List<Resource> availableResources = new ArrayList<>();
         for(Resource resource : resources) {
-            for(Rental currentRental : resource.getRentals()){
-                if(startDate.isBefore(currentRental.getTo()) && endDate.isBefore(currentRental.getFrom())){
-                    continue;
-                }
+            if(resource.isAvailable(startDate, endDate)){
                 availableResources.add(resource);
-                break;
             }
         }
         return availableResources;

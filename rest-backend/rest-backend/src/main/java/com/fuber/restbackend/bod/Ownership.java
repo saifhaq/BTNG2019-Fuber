@@ -1,4 +1,4 @@
-package com.fuber.restbackend.bdo;
+package com.fuber.restbackend.bod;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,9 +10,9 @@ public class Ownership {
     int id;
     int resource_id;
     int user_id;
-    float percentage;
+    double percentage;
 
-    public Ownership(int id, int resource_id, float percentage){
+    public Ownership(int id, int resource_id, double percentage){
         this.resource_id = resource_id;
         this.percentage = percentage;
         this.user_id = Integer.MAX_VALUE;

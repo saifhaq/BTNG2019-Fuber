@@ -1,10 +1,14 @@
-package com.fuber.restbackend.data;
+package com.fuber.restbackend.service;
 
-import com.fuber.restbackend.bdo.Ownership;
-import com.fuber.restbackend.bdo.Rental;
-import com.fuber.restbackend.bdo.Resource;
-import com.fuber.restbackend.bdo.User;
+import com.fuber.restbackend.api.rest.dto.RawBasicRental;
+import com.fuber.restbackend.bod.Ownership;
+import com.fuber.restbackend.bod.Rental;
+import com.fuber.restbackend.bod.Resource;
+import com.fuber.restbackend.bod.User;
 import lombok.Getter;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormatter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -16,7 +20,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
-@Component()
+@Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class DataService {
 
@@ -28,7 +32,9 @@ public class DataService {
 
     private AtomicInteger id;
 
-    public DataService() {
+    private final DateTimeFormatter formatter;
+
+    public DataService(DateTimeFormatter formatter) {
         this.ownershipList = new HashMap<>();
         this.rentalList = new HashMap<>();
         this.resourceList = new HashMap<>();
@@ -36,6 +42,7 @@ public class DataService {
         this.resourceTypes = new ArrayList<>();
         this.id = new AtomicInteger(0);
         this.initialiseMockData();
+        this.formatter = formatter;
     }
 
     public void addResource(Resource resource) {
@@ -45,16 +52,28 @@ public class DataService {
         resourceList.put(resource.getId(), resource);
     }
 
-    public void purchaseResource(int id, float percentage) {
-        resourceList.get(id).addOwnership(new Ownership(this.id.getAndIncrement(), id, percentage));
+    public void purchaseResource(int id, double percentage) {
+        resourceList.get(id).addOwnership(new Ownership(this.id.getAndIncrement(), id, 0, percentage));
     }
 
     public void addRental(Rental rental) {
-//        if(rental.getId() == Integer.MAX_VALUE){
-//            rental.setId(this.id.getAndIncrement());
-//        }
-//        rentalList.put(rental.getId(), rental);
-        resourceList.get(rental.getResource_id()).addRental(rental);
+        if(rental.getId() == Integer.MAX_VALUE){
+            rental.setId(this.id.getAndIncrement());
+        }
+        rentalList.put(rental.getId(), rental);
+        resourceList.get(rental.getResourceId()).getRentals().add(rental);
+    }
+
+    public void newRental(RawBasicRental rental) {
+        Rental tmpRental = new Rental(id.getAndIncrement(),
+                rental.getResource_id(),
+                0, //Not implemented
+                DateTime.parse(rental.getFrom(), formatter),
+                DateTime.parse(rental.getTo(), formatter),
+                0); //Not implemented
+        this.rentalList.put(tmpRental.getId(), tmpRental);
+        this.resourceList.get(rental.getResource_id()).getRentals().add(tmpRental);
+        //this.userList.get().add(rental) Not implemented
     }
 
     private void initialiseMockData() {
