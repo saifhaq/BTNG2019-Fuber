@@ -14,3 +14,5 @@ Project Kanban board on GitHub projects: <https://github.com/saifhaq/BTNG2019-Fu
 
 Backend/Database design using [dbdiagram.io](https://dbdiagram.io), a tool for creating Entity-Relationship Diagrams.
 
+[Google Cloud Platform (GCP)](https://cloud.google.com/) for hosting the backend
+
