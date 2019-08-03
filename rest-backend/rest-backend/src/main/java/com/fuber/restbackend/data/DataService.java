@@ -45,24 +45,30 @@ public class DataService {
         userList.add(new User(0,
                 false,
                 true,
-                "test",
-                "test",
-                "0000"));
-        userList.add(new User(0,
-                false,
+                "Zak_K_Bartlett",
+                "56 Scrimshire Lane, ASHURST, BN44 7TB",
+                "+447879209872"));
+        userList.add(new User(1,
                 true,
-                "test",
-                "test",
-                "0000"));
-        userList.add(new User(0,
                 false,
+                "Poppy_S_Hodgson",
+                "117 Prospect Hill, DRAYTON, TA10 3ZS",
+                "+447916799266"));
+        userList.add(new User(2,
                 true,
-                "test",
-                "test",
-                "0000"));
+                true,
+                "Luca_C_Ingram",
+                "51  Worthy Lane, MARTYR WORTHY, SO21 2PT",
+                "+7847392163"));
+        userList.add(new User(3,
+                false,
+                false,
+                "Sarah_M_Myers",
+                "50 Marlborough Crescent, SOUTHILL, SG18 5EQ",
+                "+447902256322"));
 
-        //addResource(new Resource(0, "Tractor"));
-        //addResource(new Resource(1, "Harvester"));
+        addResource(new Resource(0, "Tractor"));
+        addResource(new Resource(1, "Harvester"));
 
     }
 }

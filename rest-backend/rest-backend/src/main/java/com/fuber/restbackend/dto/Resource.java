@@ -16,6 +16,12 @@ public class Resource {
     private float percentAvailable;
     private List<Rental> rentals;
 
+    public Resource(int id, String type) {
+        this.id = id;
+        this.type = type;
+        this.percentAvailable = 100;
+    }
+
     public void addOwnership(Ownership ownership) {
         if(percentAvailable + ownership.percentage > 100){
             throw new IllegalStateException("Total asset ownership can't exceed 100%");
