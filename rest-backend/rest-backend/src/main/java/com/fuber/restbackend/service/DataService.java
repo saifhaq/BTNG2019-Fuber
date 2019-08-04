@@ -34,6 +34,7 @@ public class DataService {
 
     private final DateTimeFormatter formatter;
 
+    @Autowired
     public DataService(DateTimeFormatter formatter) {
         this.ownershipList = new HashMap<>();
         this.rentalList = new HashMap<>();
@@ -41,8 +42,8 @@ public class DataService {
         this.userList = new HashMap<>();
         this.resourceTypes = new ArrayList<>();
         this.id = new AtomicInteger(0);
-        this.initialiseMockData();
         this.formatter = formatter;
+        this.initialiseMockData();
     }
 
     public void addResource(Resource resource) {
@@ -77,33 +78,16 @@ public class DataService {
     }
 
     private void initialiseMockData() {
-        userList.put(id.get(), new User(id.getAndIncrement(),
-                false,
-                true,
-                "Zak_K_Bartlett",
-                "56 Scrimshire Lane, ASHURST, BN44 7TB",
-                "+447879209872"));
-        userList.put(id.get(), new User(id.getAndIncrement(),
-                true,
-                false,
-                "Poppy_S_Hodgson",
-                "117 Prospect Hill, DRAYTON, TA10 3ZS",
-                "+447916799266"));
-        userList.put(id.get(), new User(id.getAndIncrement(),
-                true,
-                true,
-                "Luca_C_Ingram",
-                "51  Worthy Lane, MARTYR WORTHY, SO21 2PT",
-                "+7847392163"));
-        userList.put(id.get(), new User(id.getAndIncrement(),
-                false,
-                false,
-                "Sarah_M_Myers",
-                "50 Marlborough Crescent, SOUTHILL, SG18 5EQ",
-                "+447902256322"));
+        addResource(new Resource(id.getAndIncrement(), "Tractor")); //Id 0
+        addResource(new Resource(id.getAndIncrement(), "Harvester")); //Id 1
+        addResource(new Resource(id.getAndIncrement(), "Fertiliser")); //Id 2
+        addResource(new Resource(id.getAndIncrement(), "Chemical")); //Id 3
+        addResource(new Resource(id.getAndIncrement(), "Drones")); //Id 4
+        addResource(new Resource(id.getAndIncrement(), "Conveyor")); //Id 5
+        addResource(new Resource(id.getAndIncrement(), "Milling Machine")); //Id 6
 
-        addResource(new Resource(id.getAndIncrement(), "Tractor"));
-        addResource(new Resource(id.getAndIncrement(), "Harvester"));
-
+        newRental(new RawBasicRental(0, "20190725", "20190925"));
+        newRental(new RawBasicRental(0, "20191026", "20200116"));
+        newRental(new RawBasicRental(0, "20180125", "20190312"));
     }
 }

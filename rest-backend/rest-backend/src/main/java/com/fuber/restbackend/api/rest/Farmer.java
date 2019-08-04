@@ -7,6 +7,7 @@ import com.fuber.restbackend.service.DataService;
 import com.fuber.restbackend.utils.Filters;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormatter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Farmer {
     private final DataService dataService;
     private final DateTimeFormatter formatter;
 
+    @Autowired
     public Farmer(DataService dataService, DateTimeFormatter formatter) {
         this.dataService = dataService;
         this.formatter = formatter;
