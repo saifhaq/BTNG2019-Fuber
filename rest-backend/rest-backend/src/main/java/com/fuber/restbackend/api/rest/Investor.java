@@ -1,8 +1,10 @@
 package com.fuber.restbackend.api.rest;
 
-import com.fuber.restbackend.bdo.Resource;
-import com.fuber.restbackend.data.DataService;
+import com.fuber.restbackend.api.rest.dto.RawBasicPurchase;
+import com.fuber.restbackend.bod.Resource;
+import com.fuber.restbackend.service.DataService;
 import com.fuber.restbackend.utils.Filters;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,9 +31,8 @@ public class Investor {
     }
 
     @RequestMapping("/purchase")
-    public void purchaseResource(@RequestParam(value = "resource_id") int resourceId,
-                                 @RequestParam(value = "percentage_share") float percentage) {
-        dataService.purchaseResource(resourceId, percentage);
+    public void purchaseResource(@RequestBody RawBasicPurchase purchase) {
+        dataService.purchaseResource(purchase.getResource_id(), purchase.getPercentage_share());
     }
 
 }

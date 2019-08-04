@@ -1,4 +1,4 @@
-package com.fuber.restbackend.bdo;
+package com.fuber.restbackend.bod;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

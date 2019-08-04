@@ -1,7 +1,7 @@
 package com.fuber.restbackend.api.rest;
 
-import com.fuber.restbackend.bdo.User;
-import com.fuber.restbackend.data.DataService;
+import com.fuber.restbackend.bod.User;
+import com.fuber.restbackend.service.DataService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
