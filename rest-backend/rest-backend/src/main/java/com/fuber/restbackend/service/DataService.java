@@ -82,7 +82,7 @@ public class DataService {
         addResource(new Resource(id.getAndIncrement(), "Harvester")); //Id 1
         addResource(new Resource(id.getAndIncrement(), "Fertiliser")); //Id 2
         addResource(new Resource(id.getAndIncrement(), "Chemical")); //Id 3
-        addResource(new Resource(id.getAndIncrement(), "Drones")); //Id 4
+        addResource(new Resource(id.getAndIncrement(), "Cultivators")); //Id 4
         addResource(new Resource(id.getAndIncrement(), "Conveyor")); //Id 5
         addResource(new Resource(id.getAndIncrement(), "Milling Machine")); //Id 6
 
