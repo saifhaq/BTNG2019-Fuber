@@ -3,16 +3,11 @@ install: true
 os: linux
 dist: trusty
 before_install:
-- openssl aes-256-cbc -k "$super_secret_password" -in gcp-client-secret.json.enc -out gcp-client-secret.json -d
 - cd rest-backend/rest-backend
 jdk:
 - oraclejdk11
 script:
 - "./gradlew build --scan -s"
-deploy:
-  provider: gae
-  keyfile: gcp-client-secret.json
-  project: fuber-248711
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -20,6 +15,3 @@ cache:
   directories:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
-env:
-  global:
-    secure: MmcBx1LdPERDJjOe0OYmpto6DJO18WYpNuiq3Yqc3notdfLoUJeGVfiHutlA6vDBfNRbrM5nhgn9RShlZpQVa8z6IkSSF54LnBguiQfRqkIQq9Q5HBnbX8ltm2TcNtlLcE00ASqYxUHRIfnGIOxDpPNyZjJKB601rKPb0/2b7ai597/oG5k+bKVztCv+v2foz9+gpmHUyztrxCN30EZlub8LcXrMODbIbyxld4a+cmCiYe0VBTO/mTsZ7QNtSQzT/6/4Iz+KfuC2XuqAn2T7ckWKhvELo58AutTo18d5/ayAVqZULVnmqxkI3VfPKGdXzlK0+WG+i4z7P1FxQFA9Sm1S8rXmSTZIbAUh+wdFqBGymz833LrreKhxF9MfPOV3wLxmkZgh/sGmJXdkCDSrh1j7r0JdO/9GKS7DWGnhcNMOYPJnBEBrrQjLw1K2fpz4SA2+ka+nHxmHMIiPFfhN8pv9KW/DbxOSx+7nr7kRKllNEz9+DO2VeOfX6nFzg7gl2w0dFbwL8NZBl2z/k6J+fyNoymk9+SP2ze7Dbte3IaaZS2VFg8i6pvPo98VV2NkVb113UufhjLKy8qSBsLLIjJeHc1vOPmkJl29eSCj7W2RkVjoizEOwmRXAKN6p47VX903Eb8crxtRzOxTMINZa6suxFTcaOA7dZfwMW3RqQyw=
