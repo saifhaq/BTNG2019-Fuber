@@ -2,6 +2,7 @@ from flask import Flask, request, session
 from twilio.twiml.messaging_response import MessagingResponse
 from datetime import datetime, timedelta
 import requests
+from btng.settings import BACKEND_API
 
 app = Flask(__name__) # pylint: disable=invalid-name
 app.secret_key = b"%$\xf9\xbd\xb1\xf3\x17,\x81]\x1f\xd7\xc3v\x03\xe57&q\x9e\x99F\x19\xa1"
@@ -12,21 +13,11 @@ TEMPLATE = '''
 {options}
 '''
 
-SHITTY_ITEMS_LIST = {
-    'types': [
-        'tractor',
-        'combine harvester',
-        'fertilizer',
-        'unpain intern',
-    ]
-}
-
 def get_items_list():
-    # res = requests.get('%s/assets/available_types_to_rent')
-    # types = res.json()['types']
-    types = SHITTY_ITEMS_LIST['types']
+    res = requests.get('%s/assets/available_types_to_rent?from=20180101&to=20210301' % BACKEND_API)
+    types = res.json()
 
-    return {k + 1: v for k, v in enumerate(types)}
+    return {x['id']: x['type'] for x in types}
 
 def get_view(question, options):
     if options:
