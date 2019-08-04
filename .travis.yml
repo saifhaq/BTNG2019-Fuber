@@ -1,4 +1,8 @@
 language: java
+install: true
+
+os: linux
+dist: trusty
 
 before_install:
   - cd rest-backend/rest-backend
