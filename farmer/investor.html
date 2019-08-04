@@ -54,7 +54,7 @@
         <!-- Sidebar Header starts-->
         <div class="sidebar-header">
           <div class="logo clearfix"><a href="index.html" class="logo-text float-left">
-              <div class="logo-img"><img src="app-assets/img/loo.png"/></div><span class="text align-middle">FaaSTrac</span></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
+              <div class="logo-img"><img src="app-assets/img/faastrac.png"/></div><span class="text align-middle">FaaSTrac</span></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="toggle-icon ft-toggle-right"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-x"></i></a></div>
         </div>
         <!-- Sidebar Header Ends-->
         <!-- / main menu header-->
@@ -429,29 +429,6 @@
 <!--Statistics cards Ends-->
 
 <!--Line with Area Chart 1 Starts-->
-<div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">Investment </h4>
-      </div>
-      <div class="card-content">
-        <div class="card-body">
-          <!-- <div class="chart-info mb-3 ml-3">
-            <span class="gradient-blackberry d-inline-block rounded-circle mr-1" style="width:15px; height:15px;"></span>
-            Sales
-            <span class="gradient-mint d-inline-block rounded-circle mr-1 ml-2" style="width:15px; height:15px;"></span>
-            Visits
-          </div> -->
-          <!-- <div id="line-area" class="height-350 lineArea">
-          </div> -->
-          <div id="chart" class="height-350 lineArea"></div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <!--Line with Area Chart 1 Ends-->
 
 <div class="row match-height">
@@ -1232,38 +1209,6 @@
 
 
     });
-
-
-
-    var chart = c3.generate({
-        data: {
-            x: 'x',
-            columns: [
-                ['x', '2019-07', '2019-08', '2019-09', '2019-10', '2019-11', '2019-12'],
-                ['Investment',  400, 400, 400, 400, 400, 400]
-            ]
-        },
-        axis: {
-            x: {
-                type: 'timeseries',
-                tick: {
-                    format: '%Y-%m'
-                }
-            }
-        }
-    }); 
-    
-    setTimeout(function () {
-        chart.load({
-            columns: [revenue]
-            // columns: [
-            //     ['Revenue', , 500, 450, 700, 600, 500]
-            // ]
-        });
-    }, 1000);
-
-
-
 
 
 
