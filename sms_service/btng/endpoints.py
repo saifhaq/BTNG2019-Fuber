@@ -115,12 +115,18 @@ def handle_convo():
     stage = session.get('stage')
     resp = MessagingResponse()
     if not stage:
+        session['cart'] = []
         msg = view_cart_question()
     else:
         if session.get('cart') is None:
             session['cart'] = []
         message = request.form.get('Body')
-        selection = int(message)
+        try:
+            selection = int(message)
+        except:
+            session['cart'] = None
+            session['stage'] = None
+            return handle_convo()
         if selection == 0:
             checkout()
         msg = OPTIONS[stage](selection)
